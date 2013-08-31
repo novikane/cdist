@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#!/bin/sh
 #
-# 2010-2011 Nico Schottelius (nico-cdist at schottelius.org)
+# 2013 Nico Schottelius (nico-cdist at schottelius.org)
 #
 # This file is part of cdist.
 #
@@ -20,14 +19,28 @@
 #
 #
 
-import os
-import cdist.config_install
+directory="$__object_id"
 
-class Install(cdist.config_install.ConfigInstall):
-    def __init__(self, *args, **kargs):
-        """Enhance config install with install support"""
+if [ -f "$__object/parameter/username" ]; then
+   username="$(cat "$__object/parameter/username")"
+else
+   username="cdist"
+fi
 
-        # Setup environ to be used in emulator
-        os.environ['__install'] = "yes"
+if [ -f "$__object/parameter/branch" ]; then
+   branch="$(cat "$__object/parameter/branch")"
+else
+   branch="master"
+fi
 
-        super().__init__(*args, **kargs)
+if [ -f "$__object/parameter/source" ]; then
+   source="$(cat "$__object/parameter/source")"
+else
+   source="git://github.com/telmich/cdist.git"
+fi
+
+__user "$username"
+
+require="__user/$username" __git "$directory" \
+    --source "$source" \
+    --owner "$username" --branch "$branch"
