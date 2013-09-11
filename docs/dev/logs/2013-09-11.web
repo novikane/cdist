@@ -1,0 +1,43 @@
+Began in Cervo, bella Italia
+
+Frontpage:
+
+    E-Mail address:
+    Hostname:
+    Service:
+        Web server (nginx)
+        Mail server (postfix)
+        DNS Server (nsd)
+
+    [ Submit for configuration]
+
+
+Register Page:
+
+    We have sent an e-mail to EMAIL with a verification link.
+
+
+
+1st Login:
+
+    Thanks for registering with us!
+
+    Please add our public ssh key to the file /root/.ssh/authorized_keys.
+    This will allow our configuration management system access to your
+    system as root.
+
+    After you have done so, you can press configure to configure
+    your system.
+
+Login Frontpage:
+
+    
+
+    Our SSH-Key:
+
+    Host Table
+
+    Hostname    Services    Connection Ok
+
+    Name
+
