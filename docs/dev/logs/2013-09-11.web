@@ -12,32 +12,64 @@ Frontpage:
     [ Submit for configuration]
 
 
+    Background:
+        - generate public ssh key
+        - send mail
+
+Mail:
+
+    - Link to 1st login page
+    - public key as attachement
+
 Register Page:
 
     We have sent an e-mail to EMAIL with a verification link.
-
 
 
 1st Login:
 
     Thanks for registering with us!
 
-    Please add our public ssh key to the file /root/.ssh/authorized_keys.
+    The next steps to configure your hosts:
+
+        1. Grant us access to your system so we can configure it
+        2. Verify that the connection works
+        3. Configure your system
+
+    [ Continue ]
+
+Login Frontpage:
+    
+
+    To grant us acess to configure your system enter the following
+    commands as **root** on the target host:
+
+    # mkdir -p ~/.ssh/
+    # chmod 0700 ~/.ssh
+    # cat << eof >> ~/.ssh/authorized_keys
+    SSHKEY
+    eof
+    # chmod 0600 ~/.ssh/authorized_keys
+
+    Host Table
+
+    Hostname    Services    Access works            Actions
+
+    Name        [drop down] [y = green, n = red]    Verify Access,
+    [link to logfile]                               Configure Host
+
+    [new host field]    [drop down]
+
+    Verify Access: 
+        FIXME
+
+
+Old stuff:
+
+    Please add our [ public ssh key ] to the file /root/.ssh/authorized_keys.
     This will allow our configuration management system access to your
     system as root.
 
     After you have done so, you can press configure to configure
     your system.
-
-Login Frontpage:
-
-    
-
-    Our SSH-Key:
-
-    Host Table
-
-    Hostname    Services    Connection Ok
-
-    Name
 
